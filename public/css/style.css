@@ -1,0 +1,55 @@
+header .navbar{
+    border-radius: 0;
+    margin: 0;
+}
+
+body {
+    height: 100%;
+    color: #262626;
+    font-family: 'Helvetica Neue Light', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif, Arial;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0px;
+}
+
+h1 {
+    margin: 0 0 8px 0;
+    font-size: 24px;
+    font-family: 'Helvetica Neue Light', 'Helvetica Neue', 'Segoe UI', Roboto, sans-serif, Arial;
+    font-weight: 300;
+}
+
+a {
+  color: #00B7FF;
+}
+
+input.jsgrid-button.jsgrid-search-button{
+    width: 100px;
+}
+
+.hero{
+    background-image: url(../img/planet.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    padding: 50px 0;
+    min-height: 500px;
+    position: relative;
+}
+
+.hero-content{
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+}
+.hero-content h2{
+    color: #ffa;
+    font-size: 80px;
+}
+main{
+    padding: 10px 0;
+    min-height: 500px;
+}

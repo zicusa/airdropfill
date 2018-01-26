@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <% include ../views/head %> 
+        <script>            
+            
+            $(function () {
+                var X = XLSX;    
+                var OUT = document.getElementById('out'); 
+                       
+                var process_wb = (function() {
+                    
+                    var to_json = function to_json(workbook) {
+                        var result = {};
+                        var jsonObj;
+                        workbook.SheetNames.forEach(function(sheetName) {
+                            var oJS = X.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);   
+                            result.Data = oJS;
+                            jsonObj = JSON.stringify(result);
+                            //var roa = X.utils.sheet_to_json(workbook.Sheets[sheetName], {header:1});
+                            //if(roa.length) result[sheetName] = roa;
+                        });
+                        return jsonObj//JSON.stringify(result, 2, 2);
+                    };
+                    
+                    return function process_wb(wb) {
+                        var output="";
+                        output=to_json(wb); 
+                        OUT.innerText=output;
+                    };
+                })();
+
+                var do_file = (function() {
+                    return function do_file(files, output) {      
+                        var f = files[0];             
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            var data = e.target.result;
+                            process_wb(X.read(data, {type: 'binary' }));
+                        };
+                        reader.readAsBinaryString(f);                
+                    };
+                })();
+                $('#xlf').on('change', function(e) {                    
+                    do_file(e.target.files);
+                });
+            });          
+            
+        </script>
+        
+    </head>
+    <body>
+        <header>
+            <% include ../views/header %>
+        </header>
+        <section class="hero">
+                <div class="hero-content">
+                    <h2>xxx</h2>
+                </div>
+        </section>
+        <main>           
+            <div class="container">
+                    <div class="col-sm-5">
+                        <div>
+                                    <h3>Site</h3>
+                                    <div class="well">
+                                        <input id="site" type="text" value="" style="width: 100%;"/>                                 
+                                    </div>
+                        </div>    
+                        <div>
+                                <h3>Data</h3>
+                                <div class="well">
+                                    <form id="uploadExcel" enctype="multipart/form-data" action="/" method="post">
+                                        <input type="file" name="file" id="xlf" />                                       
+                                        <br />Data                                                                            
+                                    </form>                                    
+                                    <pre id="out"></pre>                                    
+                                </div>
+                        </div>                            
+                    </div>
+                    
+                    <div class="col-sm-7">
+                        <div >
+                                <div id="jsGrid" name="jsGrid"></div>
+                                <br />
+                                <input type="button" id="jsGetGrid" value="Run" />
+                                <input type="button" id="jsSaveGrid" value="Save" />
+                                <input type="text" id="name" name="name" placeholder="email"> 
+                                <input type="button" id="getFile" value="Get file" />
+                        </div>                            
+                    </div>
+                    
+            </div>          
+            
+        </main>
+       
+        <footer>
+            <% include ../views/footer %>
+        </footer>
+    </body>
+    
+</html>

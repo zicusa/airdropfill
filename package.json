@@ -1,0 +1,28 @@
+{
+  "name": "webautofill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "webautofill": "www.js"
+  },
+  "dependencies": {
+    "date-format": "^1.2.0",
+    "ejs": "^2.5.7",
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.2",
+    "jsgrid": "^1.5.3",
+    "jszip": "^3.1.5",
+    "mkdirp": "^0.5.1",
+    "nedb": "^1.8.0",
+    "nightmare": "^2.10.0",
+    "xlsx": "^0.11.17",
+    "xlsx-to-json": "^0.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
